@@ -50,8 +50,9 @@ Follow these steps to run the project locally:
 Environment Variables used are:
 
 ```bash
-  GOOGLE_GENERATIVE_AI_API_KEY = your-api-key-here
-  MCP_SERVER_DATASET_URL = https://glama.ai/mcp/servers
+  GROQ_AI_API_KEY = your-api-key-here
+  GROQ_CHAT_MODEL = "llama-4-scout-17b-16e-instruct"
+  
 ```
 
 5. Start the development server:
@@ -109,13 +110,10 @@ The **MCP Recommendator** interface allows users to input queries, which the AI 
 
 - The **frontend** communicates with the **backend API** to analyze user queries and return appropriate MCP server recommendations.
 - The backend uses **Google Generative AI** API to process the user's query and recommend relevant servers by searching through an external **MCP dataset** (from the provided `https://glama.ai/mcp/servers` URL).
-- The **`/api/llm`** API route processes the input and communicates with the **Google API**, returning the results as a list of recommended servers.
+- The **`/api/llm`** API route processes the input and communicates with the **aGENT API**, returning the results as a list of recommended servers.
 
-#### Example of API Usage:
 
-The frontend sends a `POST` request to the backend with the user's query. The backend then makes a request to the **Google Generative AI API** and uses its response to fetch the relevant MCP servers. Once the results are received, they are returned to the frontend for display.
 
----
 
 ## UI Related Decisions:
 
