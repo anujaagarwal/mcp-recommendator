@@ -1,77 +1,77 @@
 
 import { MCPServer } from "../../app/page";
 
-
+require("dotenv").config();
 export const mcpServerDatabase: MCPServer[] =
 [
-  {
-    "name": "DataWorks MCP Server",
-    "url": "https://github.com/aliyun/alibabacloud-dataworks-mcp-server",
-    "description": "A Model Context Protocol server that enables AI agents to interact with Alibaba Cloud DataWorks through standardized interfaces",
-    "author": "by Alibaba Cloud",
-    "license": "Apache 2.0",
-    "tags": [
-      "Cloud Platforms",
-      "Developer Tools"
-    ],
-    "requirements": {
-      "node_version": "v16 or higher",
-      "api_key": "ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET required"
-    },
-    "tools": [
-      {
-        "name": "ListProjects",
-        "description": "Queries a list of DataWorks workspaces"
-      },
-      {
-        "name": "CreateFile",
-        "description": "Creates a file in DataStudio"
-      },
-      {
-        "name": "SubmitFile",
-        "description": "Commits a file to the development environment"
-      },
-      {
-        "name": "DeployFile",
-        "description": "Deploys a file to the production environment"
-      },
-      {
-        "name": "CreateDIJob",
-        "description": "Creates a new-version synchronization task"
-      },
-      {
-        "name": "StartDIJob",
-        "description": "Starts a synchronization task"
-      }
-    ],
-    "env": {}
-  },
-  {
-    "name": "Nefino MCP Server",
-    "url": "https://github.com/nefino/mcp-nefino",
-    "description": "Provides Large Language Models with access to news and information about renewable energy projects in Germany",
-    "author": "by Nefino",
-    "license": "Apache 2.0",
-    "tags": [
-      "Research & Data",
-      "Location Services"
-    ],
-    "requirements": {
-      "node_version": "Python 3.10 or higher",
-      "api_key": "Nefino API credentials required"
-    },
-    "tools": [
-      {
-        "name": "StartNewsRetrieval",
-        "description": "Start an asynchronous news retrieval task for a place"
-      },
-      {
-        "name": "GetNewsResults",
-        "description": "Get the results of a previously started news retrieval task"
-      }
-    ],
-    "env": {}
-  },
+//   {
+//     "name": "DataWorks MCP Server",
+//     "url": "https://github.com/aliyun/alibabacloud-dataworks-mcp-server",
+//     "description": "A Model Context Protocol server that enables AI agents to interact with Alibaba Cloud DataWorks through standardized interfaces",
+//     "author": "by Alibaba Cloud",
+//     "license": "Apache 2.0",
+//     "tags": [
+//       "Cloud Platforms",
+//       "Developer Tools"
+//     ],
+//     "requirements": {
+//       "node_version": "v16 or higher",
+//       "api_key": "ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET required"
+//     },
+//     "tools": [
+//       {
+//         "name": "ListProjects",
+//         "description": "Queries a list of DataWorks workspaces"
+//       },
+//       {
+//         "name": "CreateFile",
+//         "description": "Creates a file in DataStudio"
+//       },
+//       {
+//         "name": "SubmitFile",
+//         "description": "Commits a file to the development environment"
+//       },
+//       {
+//         "name": "DeployFile",
+//         "description": "Deploys a file to the production environment"
+//       },
+//       {
+//         "name": "CreateDIJob",
+//         "description": "Creates a new-version synchronization task"
+//       },
+//       {
+//         "name": "StartDIJob",
+//         "description": "Starts a synchronization task"
+//       }
+//     ],
+//     "env": {}
+//   },
+//   {
+//     "name": "Nefino MCP Server",
+//     "url": "https://github.com/nefino/mcp-nefino",
+//     "description": "Provides Large Language Models with access to news and information about renewable energy projects in Germany",
+//     "author": "by Nefino",
+//     "license": "Apache 2.0",
+//     "tags": [
+//       "Research & Data",
+//       "Location Services"
+//     ],
+//     "requirements": {
+//       "node_version": "Python 3.10 or higher",
+//       "api_key": "Nefino API credentials required"
+//     },
+//     "tools": [
+//       {
+//         "name": "StartNewsRetrieval",
+//         "description": "Start an asynchronous news retrieval task for a place"
+//       },
+//       {
+//         "name": "GetNewsResults",
+//         "description": "Get the results of a previously started news retrieval task"
+//       }
+//     ],
+//     "env": {}
+//   },
   {
     "name": "GitHub Projects MCP Server",
     "url": "https://github.com/taylor-lindores-reeves/mcp-github-projects",
@@ -211,7 +211,10 @@ export const mcpServerDatabase: MCPServer[] =
         "description": "Update an existing GitHub issue"
       }
     ],
-    "env": {}
+    "env": {
+        "GITHUB_TOKEN":"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",
+        "GITHUB_OWNER":"anujaagarwal"
+    }
   },
   {
     "name": "EdgeOne Pages MCP",
@@ -321,6 +324,8 @@ export const mcpServerDatabase: MCPServer[] =
       }
     ],
     "env": {}
-}]
+}
+
+]
 
   

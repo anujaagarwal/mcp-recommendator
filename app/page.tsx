@@ -3,7 +3,6 @@ import { useState, ChangeEvent } from 'react';
 import { useChat } from 'ai/react';
 import { ChatSection } from '@llamaindex/chat-ui';
 
-
 // Define the MCP server type for TypeScript
 
 interface Tool {

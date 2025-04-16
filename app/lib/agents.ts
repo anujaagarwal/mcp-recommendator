@@ -10,7 +10,7 @@ import { ChatModel } from "beeai-framework/backend/chat";
 import { Client } from "@modelcontextprotocol/sdk/client/index";
 import { StdioServerParameters, StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { EventEmitter } from "events";
-import {llm} from './model'
+
 
 import { Emitter } from "beeai-framework/emitter/emitter";
 import {
@@ -26,7 +26,7 @@ import {
 type ToolOptions = BaseToolOptions & { maxResults?: number };
 type ToolRunOptions = BaseToolRunOptions;
 const workflow = new AgentWorkflow("Smart assistant");
-
+console.log("groq-api", process.env.GROQ_API_KEY)
 interface Tool1 {
   name: string;
   description: string;
@@ -120,6 +120,7 @@ export class McpRecommenderTool extends Tool<McpRecommenderToolOutput, ToolOptio
     return new McpRecommenderToolOutput(matched_servers);
   }
   
+  
   private _search_mcp_servers(query: string): MCPServer[] {
     // Implementation of search logic against MCP database
     // This would include keyword matching, category filtering, etc.
@@ -184,7 +185,7 @@ async function createMcpTool(serverConfig: ServerConfig): Promise<MCPTool[] | nu
 
 export async function createAgent(mcp_database: MCPServer[], active_servers?: MCPServer[]): Promise<AgentWorkflow> {
   // Use ChatModel.fromName to create the LLM instance
-  const llm = await ChatModel.fromName(`groq:${process.env.GROQ_CHAT_MODEL}`);
+  const llm = await ChatModel.fromName(`groq:${process.env.GROQ_CHAT_MODEL || "llama-4-scout-17b-16e-instruct"}`);
   
   // Create the main recommendation tool
   const recommender_tool = new McpRecommenderTool(mcp_database);
@@ -205,6 +206,7 @@ export async function createAgent(mcp_database: MCPServer[], active_servers?: MC
 
   
   // Add recommender agent
+
   workflow.addAgent({
     name: "Recommender",
     instructions: "You are an MCP server expert who helps users find and use the right MCP servers. When users describe their needs, recommend appropriate MCP servers. Explain why each recommendation is suitable for their use case If they want to use a server, help them connect it to their session.",
@@ -212,7 +214,7 @@ export async function createAgent(mcp_database: MCPServer[], active_servers?: MC
     llm,
   });
   
-  
+
   // Add tool agent for using active servers if any
   if (mcp_tools.length > 0) {
     // Another possible syntax
